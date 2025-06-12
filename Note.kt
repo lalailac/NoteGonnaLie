@@ -1,5 +1,6 @@
-@Dao
-interface NoteDao {
-    @Query("SELECT * FROM note_table ORDER BY timestamp DESC")
-    fun getAllNotes(): LiveData<List<Note>>
-}
+@Entity(tableName = "note_table")
+data class Note(
+    @PrimaryKey(autoGenerate = true) val id: Int = 0,
+    val content: String,
+    val timestamp: Long = System.currentTimeMillis()
+)
